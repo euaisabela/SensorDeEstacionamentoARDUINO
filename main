@@ -1,0 +1,71 @@
+// Definição dos pinos
+const int trigPin = 9;      // Pino do Trigger do sensor ultrassônico
+const int echoPin = 10;     // Pino do Echo do sensor ultrassônico
+const int buzzerPin = 11;    // Pino do Buzzer
+const int ledVerde = 3;     // LED Verde
+const int ledAmarelo = 4;   // LED Amarelo
+const int ledVermelho = 5;   // LED Vermelho
+
+// Variáveis para distância e tempo de pulso
+long duracao;
+int distancia;
+
+void setup() {
+  // Configurando pinos
+  pinMode(trigPin, OUTPUT);
+  pinMode(echoPin, INPUT);
+  pinMode(buzzerPin, OUTPUT);
+  pinMode(ledVerde, OUTPUT);
+  pinMode(ledAmarelo, OUTPUT);
+  pinMode(ledVermelho, OUTPUT);
+
+  // Inicializando comunicação serial
+  Serial.begin(9600);
+}
+
+void loop() {
+  // Enviar pulso ultrassônico
+  digitalWrite(trigPin, LOW);
+  delayMicroseconds(2);
+  digitalWrite(trigPin, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(trigPin, LOW);
+
+  // Ler o tempo de retorno do pulso (echo)
+  duracao = pulseIn(echoPin, HIGH);
+
+  // Calcular a distância (em cm)
+  distancia = duracao * 0.034 / 2;
+
+  // Exibir distância no monitor serial
+  Serial.print("Distancia: ");
+  Serial.print(distancia);
+  Serial.println(" cm");
+
+  // Controlar LEDs e Buzzer com base na distância
+  if (distancia > 50) {
+    // Zona segura
+    digitalWrite(ledVerde, HIGH);
+    digitalWrite(ledAmarelo, LOW);
+    digitalWrite(ledVermelho, LOW);
+    noTone(buzzerPin);  // Buzzer desligado
+  } else if (distancia > 20 && distancia <= 50) {
+    // Zona de atenção
+    digitalWrite(ledVerde, LOW);
+    digitalWrite(ledAmarelo, HIGH);
+    digitalWrite(ledVermelho, LOW);
+    tone(buzzerPin, 1000);  // Buzzer com som contínuo
+  } else if (distancia <= 20) {
+    // Zona de perigo
+    digitalWrite(ledVerde, LOW);
+    digitalWrite(ledAmarelo, LOW);
+    digitalWrite(ledVermelho, HIGH);
+    tone(buzzerPin, 2000);  // Buzzer com som mais agudo
+    delay(100);
+    noTone(buzzerPin);
+    delay(100);
+  }
+
+  // Pequena pausa para estabilizar as leituras
+  delay(100);
+}
