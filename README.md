@@ -9,12 +9,12 @@ Este projeto utiliza um sensor ultrassônico, LEDs e um buzzer para criar um sis
 - Arduino Uno
 - Sensor ultrassônico HC-SR04
 - 1 LED Verde
-- 1 LED Amarelo
 - 1 LED Vermelho
 - 1 Buzzer
 - Resistores (220Ω recomendados para os LEDs)
 - Protoboard
 - Fios Jumper
+- A BATERIA ( utilizamos uma carregador portátil) 
 
 
 ALGUMAS IMAGENS INICIAIS DE COMO SERIA INSTALADO NO PROEJETO FÍSICO:
