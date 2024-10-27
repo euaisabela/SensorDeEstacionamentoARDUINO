@@ -2,17 +2,20 @@ const int trigPin = 9;
 const int echoPin = 10;
 const int buzzerPin = 8;
 const int ledRedPin = 7; 
+const int ledGreenPin = 6; 
 
 void setup() {
   pinMode(trigPin, OUTPUT);
   pinMode(echoPin, INPUT);
   pinMode(buzzerPin, OUTPUT);
   pinMode(ledRedPin, OUTPUT); 
+  pinMode(ledGreenPin, OUTPUT);
   Serial.begin(9600);
 }
 
 void loop() {
   long duration, distance;
+  
   
   digitalWrite(trigPin, LOW);
   delayMicroseconds(2);
@@ -20,21 +23,29 @@ void loop() {
   delayMicroseconds(10);
   digitalWrite(trigPin, LOW);
 
- 
+
   duration = pulseIn(echoPin, HIGH);
   
   distance = (duration * 0.0343) / 2;
+
 
   Serial.print("Distancia: ");
   Serial.print(distance);
   Serial.println(" cm");
 
-  if (distance < 5) { // Menor que 5 cm
-    tone(buzzerPin, 1000); // Liga o buzzer a 1000 Hz
+
+  if (distance < 5) { 
+    tone(buzzerPin, 1000); 
     digitalWrite(ledRedPin, HIGH); 
-  } else {
-    noTone(buzzerPin); // Desliga o buzzer
+    digitalWrite(ledGreenPin, LOW);
+  } else if (distance > 10) { 
+    noTone(buzzerPin); 
     digitalWrite(ledRedPin, LOW); 
+    digitalWrite(ledGreenPin, HIGH); 
+  } else {
+    noTone(buzzerPin); 
+    digitalWrite(ledRedPin, LOW); 
+    digitalWrite(ledGreenPin, LOW); 
   }
 
   delay(100);
