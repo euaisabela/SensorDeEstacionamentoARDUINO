@@ -15,3 +15,11 @@ Este projeto utiliza um sensor ultrassônico, LEDs e um buzzer para criar um sis
 - Resistores (220Ω recomendados para os LEDs)
 - Protoboard
 - Fios Jumper
+
+
+ALGUMAS IMAGENS INICIAIS DE COMO SERIA INSTALADO NO PROEJETO FÍSICO:
+
+LINK DO SITE : https://www.tinkercad.com/
+
+![image](https://github.com/user-attachments/assets/5ceb8d08-1b88-4dfb-ba77-bf7133cff024)
+
