@@ -11,7 +11,11 @@ ALGUMAS IMAGENS INICIAIS DE COMO SERIA INSTALADO NO PROJETO FÍSICO:
 
 LINK DO SITE : https://www.tinkercad.com/
 
-![image](https://github.com/user-attachments/assets/5ceb8d08-1b88-4dfb-ba77-bf7133cff024)
+
+
+![image](https://github.com/user-attachments/assets/2ec6b74e-2161-4d20-92ee-fba70fb88a61)
+
+
 
 
 
