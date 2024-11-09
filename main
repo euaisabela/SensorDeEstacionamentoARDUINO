@@ -1,50 +1,73 @@
-const int trigPin = 9;       
-const int echoPin = 10;
-const int buzzerPin = 8;     
-const int ledRedPin = 7;    
-const int ledGreenPin = 6; 
+const int trigPin1 = 9;       
+const int echoPin1 = 10;      
+const int trigPin2 = 11;      
+const int echoPin2 = 12;     
+const int buzzerPin = 8;      
+const int ledRedPin1 = 7;    
+const int ledGreenPin1 = 6;   
+const int ledRedPin2 = 5;     
+const int ledGreenPin2 = 4;   
 
 void setup() {
-  pinMode(trigPin, OUTPUT);
-  pinMode(echoPin, INPUT);
+  pinMode(trigPin1, OUTPUT);
+  pinMode(echoPin1, INPUT);
+  pinMode(trigPin2, OUTPUT);
+  pinMode(echoPin2, INPUT);
   
   pinMode(buzzerPin, OUTPUT);
-  pinMode(ledRedPin, OUTPUT);
-  pinMode(ledGreenPin, OUTPUT);
+  pinMode(ledRedPin1, OUTPUT);
+  pinMode(ledGreenPin1, OUTPUT);
+  pinMode(ledRedPin2, OUTPUT);
+  pinMode(ledGreenPin2, OUTPUT);
   
   Serial.begin(9600);
 }
 
 void loop() {
-  long duration, distance;
-  
-  // Leitura do sensor ultrassônico
-  digitalWrite(trigPin, LOW);
-  delayMicroseconds(2);
-  digitalWrite(trigPin, HIGH);
-  delayMicroseconds(10);
-  digitalWrite(trigPin, LOW);
-  duration = pulseIn(echoPin, HIGH);
-  distance = (duration * 0.0343) / 2;
+  long distance1 = readDistance(trigPin1, echoPin1);
+  long distance2 = readDistance(trigPin2, echoPin2);
 
- 
-  if (distance > 7 && distance <= 10) { 
+  // Controle do buzzer e LEDs para a vaga 1
+  if (distance1 > 7 && distance1 <= 10) { 
     digitalWrite(buzzerPin, HIGH);
   } else {
     digitalWrite(buzzerPin, LOW); 
   }
   
-  if (distance < 6) { 
-    digitalWrite(ledRedPin, HIGH);
-    digitalWrite(ledGreenPin, LOW);
+  if (distance1 < 6) { 
+    digitalWrite(ledRedPin1, HIGH);
+    digitalWrite(ledGreenPin1, LOW);
   } else {            
-    digitalWrite(ledGreenPin, HIGH);
-    digitalWrite(ledRedPin, LOW);
+    digitalWrite(ledGreenPin1, HIGH);
+    digitalWrite(ledRedPin1, LOW);
+  }
+
+  // Controle dos LEDs para a vaga 2
+  if (distance2 < 6) { 
+    digitalWrite(ledRedPin2, HIGH);
+    digitalWrite(ledGreenPin2, LOW);
+  } else {            
+    digitalWrite(ledGreenPin2, HIGH);
+    digitalWrite(ledRedPin2, LOW);
   }
 
   
-  Serial.print("Distância: ");
-  Serial.println(distance);
+  Serial.print("Distância Vaga 1: ");
+  Serial.print(distance1);
+  Serial.print(" cm, Distância Vaga 2: ");
+  Serial.print(distance2);
+  Serial.println(" cm");
 
   delay(100); 
+}
+
+
+long readDistance(int trigPin, int echoPin) {
+  digitalWrite(trigPin, LOW);
+  delayMicroseconds(2);
+  digitalWrite(trigPin, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(trigPin, LOW);
+  long duration = pulseIn(echoPin, HIGH);
+  return (duration * 0.0343) / 2;
 }
