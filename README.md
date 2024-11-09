@@ -16,6 +16,9 @@ LINK DO SITE : https://www.tinkercad.com/
 ![image](https://github.com/user-attachments/assets/2ec6b74e-2161-4d20-92ee-fba70fb88a61)
 
 
+![image](https://github.com/user-attachments/assets/6278761c-6f5d-42c1-95cc-3c2cd97c9eb9)
+
+
 
 
 
