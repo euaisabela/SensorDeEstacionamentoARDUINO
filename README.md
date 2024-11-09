@@ -6,6 +6,15 @@ Este projeto é uma solução simples para monitoramento de vagas de estacioname
 
 O projeto usa dois sensores ultrassônicos para medir a distância até o veículo e determina se a vaga está ocupada ou livre com base na distância medida. A seguir, são acesos LEDs verdes ou vermelhos para indicar o estado das vagas. Um buzzer emite um som alto quando um carro está se aproximando, e o som para quando a vaga é ocupada.
 
+
+ALGUMAS IMAGENS INICIAIS DE COMO SERIA INSTALADO NO PROJETO FÍSICO:
+
+LINK DO SITE : https://www.tinkercad.com/
+
+![image](https://github.com/user-attachments/assets/5ceb8d08-1b88-4dfb-ba77-bf7133cff024)
+
+
+
 ## Componentes Utilizados
 
 - **Placa Arduino (Uno ou compatível)**
@@ -54,20 +63,6 @@ O projeto usa dois sensores ultrassônicos para medir a distância até o veícu
 
 O código do projeto pode ser encontrado no arquivo `main.ino`. Ele inclui a configuração dos pinos do Arduino, a leitura dos sensores ultrassônicos, o controle dos LEDs e do buzzer.
 
-
-
-
-
-
-
-
-
-
-ALGUMAS IMAGENS INICIAIS DE COMO SERIA INSTALADO NO PROEJETO FÍSICO:
-
-LINK DO SITE : https://www.tinkercad.com/
-
-![image](https://github.com/user-attachments/assets/5ceb8d08-1b88-4dfb-ba77-bf7133cff024)
 
 
 ![image](https://github.com/user-attachments/assets/eadecf53-7a28-4c02-9926-21222ac6f333)
