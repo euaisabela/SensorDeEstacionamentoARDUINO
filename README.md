@@ -18,6 +18,8 @@ LINK DO SITE : https://www.tinkercad.com/
 
 ![image](https://github.com/user-attachments/assets/6278761c-6f5d-42c1-95cc-3c2cd97c9eb9)
 
+![image](https://github.com/user-attachments/assets/d1c72e4d-d71e-4298-b0dc-740d240f1f7e)
+
 
 
 
